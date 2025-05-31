@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODE Solver - Runge-Kutta & Adams</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ODE Solver</h1>
+    <div class="solver-form">
+      <div class="form-section">
+        <h2>System of ODEs</h2>
+        <div id="equations">
+          <div class="equation">
+            <label>y1' = </label>
+            <input type="text" id="eq1" value="y2 + sin(t)">
+          </div>
+          <div class="equation">
+            <label>y2' = </label>
+            <input type="text" id="eq2" value="-y1 + cos(t)">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Initial Conditions</h2>
+        <div id="conditions">
+          <div class="condition">
+            <label>y1(0) = </label>
+            <input type="number" id="y10" value="0" step="0.1">
+          </div>
+          <div class="condition">
+            <label>y2(0) = </label>
+            <input type="number" id="y20" value="-1" step="0.1">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Parameters</h2>
+        <div class="parameter">
+          <label>t<sub>start</sub> = </label>
+          <input type="number" id="t0" value="0" step="0.1">
+        </div>
+        <div class="parameter">
+          <label>t<sub>end</sub> = </label>
+          <input type="number" id="tEnd" value="6.28" step="0.1">
+        </div>
+        <div class="parameter">
+          <label>Step size = </label>
+          <input type="number" id="step" value="0.1" step="0.01" min="0.01">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Method</h2>
+        <select id="method">
+          <option value="RUNGE_KUTTA_4">Runge-Kutta 4th Order</option>
+          <option value="ADAMS_BASHFORTH_4">Adams-Bashforth 4th Order</option>
+        </select>
+      </div>
+
+      <button id="solveBtn">Solve</button>
+    </div>
+
+    <div class="results">
+      <h2>Results</h2>
+      <div class="chart-container">
+        <canvas id="chart"></canvas>
+      </div>
+      <div class="solution-table" id="solutionTable"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
